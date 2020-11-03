@@ -1,0 +1,117 @@
+      {% extends "header.html" %}
+      {% block head %}
+      
+      <div class="container">
+
+        <form action="" method="POST" style="padding-bottom: 30px;">
+        <div class="columns">
+          
+          <div class="column">
+            <div class="control">
+              <input class="input" type="text" placeholder="Enter task" name="task">
+            </div>
+          </div>
+          <div class="column">
+            <div class="select">
+              <select name="name">
+                {%for i in member%}
+                <option>{{i["name"]}}</option>
+                {%endfor%}
+              </select>
+            </div>
+          </div>
+          <div class="column">
+          <button class="button is-success">Add task</button>
+          </div>
+         
+        </div>
+         </form>
+         
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Team Member</th>
+              <th>Task</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%for i in task%}
+            
+            <tr>
+              <td style="width: 4%"><a onclick="show({{[i['id']]}})"><img src="https://img.icons8.com/metro/26/000000/plus.png"/></a></td>
+              
+              <td>{{i["name"]}}</td>
+            </tr>
+              {% for j in i["task"]%}
+              
+              <tr class="{{i['id']}}" style="display: none">
+                <td></td>
+                <td></td>
+                <td>{{j["task"]}}</td>
+                <td style="width: 9%">{{j["startdate"]}}</td>
+                <td style="width: 9%">{{j["enddate"]}}</td>
+                {% if j["status"]=='Open'%}
+                <td style="background: red">{{j["status"]}}</td>
+                {% elif j["status"]=='Close' %}
+                <td style="background: green">{{j["status"]}}</td>
+                {% elif j["status"]=='On Hold' %}
+                <td style="background: yellow">{{j["status"]}}</td>
+                {%endif%}
+                <td style="width: 26%">
+                  <div class="select">
+                    <select name="name" id='{{j["idx"]}}'>
+                      
+                      <option>Open</option>
+                      <option>On Hold</option>
+                      <option>Close</option>
+                      
+                    </select>
+                  </div>
+                  <a onclick="status({{[j['idx']]}})" class="button is-primary"> Save</a>
+                  <a href="/delete/{{j['idx']}}"class="button is-danger">Delete</a>
+                </td>
+              </tr>
+              {%endfor%}
+            {%endfor%}
+          </tbody>
+        </table>
+      </div>
+
+      <script type="text/javascript">
+        showing=null
+        function show(idx){
+          if(showing==null){
+            className=document.getElementsByClassName(idx[0])
+            for(var i=0;i<className.length;i++){
+              console.log(i)
+              console.log(className[i])
+              className[i].style.display="table-row"
+            }
+            showing=idx[0]
+          }
+          else if(showing==idx[0]){
+            className=document.getElementsByClassName(idx[0])
+            for(var i=0;i<className.length;i++){
+              className[i].style.display="none"
+            }
+            showing=null
+          }
+          else{
+            className=document.getElementsByClassName(idx[0])
+            for(var i=0;i<className.length;i++){
+              className[i].style.display="table-row"
+            }
+            showing=idx[0]
+          }
+        }
+        function status(idx){
+          stat=document.getElementById(idx[0]).value
+          window.open("/status/"+idx[0]+"@"+stat,"_self")
+        }
+      </script>
+
+      {% endblock %}

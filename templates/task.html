@@ -1,0 +1,116 @@
+{% extends "header.html" %}
+{% block head %}
+<div class="container">
+	
+	
+	<form method="POST" action="">
+		<div class="columns">
+			<div class="column">
+				<label class="label">Filter By Name</label>
+				<div class="select">
+
+				  <select name="name">
+				    <option>Select Team Mate</option>
+				    {%for i in data%}
+	                <option>{{i["name"]}}</option>
+	                {%endfor%}
+				  </select>
+				</div>
+			</div>
+			<div class="column">
+				<label class="label">Filter By Status</label>
+				<div class="select" >
+					
+				  <select name="status">
+				  	<option>Select Status</option>
+				    <option>Open</option>
+				    <option>Close</option>
+				    <option>On Hold</option>
+				  </select>
+				</div>
+			</div>
+			<div class="column">
+				<div class="field">
+				 <label class="label">Start Date</label>
+				  <div class="control">
+				    <input class="input" type="date" placeholder="Text input" name="startdate">
+				  </div>
+				
+				</div>
+			</div>
+			<div class="column">
+				<div class="field">
+				 <label class="label">End Date</label>
+				  <div class="control">
+				    <input class="input" type="date" placeholder="Text input" name="enddate">
+				  </div>
+				
+				</div>
+			</div>
+			<div class="column">
+				
+				<button class="button is-success" style="margin-top: 30px;"> Filter</button>
+				
+			</div>
+		</div>
+	</form>
+	<div class="columns">
+		<div class="column">
+			<a href="/downloads/" class="button is-primary">Download</a>
+		</div>
+	</div>
+	<div style="padding-top: 20px;">
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Task Name</th>
+              <th>Assigned To</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+          	{% for i in task%}
+            <tr>
+              <td style="width: 2%">{{loop.index}}</td>
+              <td>{{i["task"]}}</td>
+              <td style="width: 18%">{{i["name"]}}</td>
+              <td style="width: 9%">{{i["startdate"]}}</td>
+              <td style="width: 9%">{{i["enddate"]}}</td>
+              {% if i["status"]=='Open'%}
+                <td style="background: red; width:7%">{{i["status"]}}</td>
+                {% elif i["status"]=='Close' %}
+                <td style="background: green; width:7%">{{i["status"]}}</td>
+                {% elif i["status"]=='On Hold' %}
+                <td style="background: yellow;width:7%">{{i["status"]}}</td>
+                {%endif%}
+                <td style="width: 24%">
+                  <div class="select">
+                    <select name="name" id='{{i["idx"]}}'>
+                      
+                      <option>Open</option>
+                      <option>On Hold</option>
+                      <option>Close</option>
+                      
+                    </select>
+                  </div>
+                  <a onclick="status({{[i['idx']]}})" class="button is-primary"> Save</a>
+                  <a href="/delete/{{i['idx']}}"class="button is-success is-light"><img src="https://img.icons8.com/fluent/48/000000/delete-forever.png" height="30" width="30" /></a>
+                </td>
+              
+            </tr>
+
+            {%endfor%}
+          </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+	function status(idx){
+          stat=document.getElementById(idx[0]).value
+          window.open("/status/"+idx[0]+"@"+stat,"_self")
+        }
+</script>
+{% endblock %}

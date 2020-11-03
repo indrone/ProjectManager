@@ -1,0 +1,24 @@
+name,task,startdate,status,enddate
+RITAPRAVA DUTTA,"Software Installation - Airflow,python,qpdf, tesseract,",2020-09-11,Close,2020-09-13
+SWARNA YAMUNA,"Software Installation - Airflow,python,qpdf, tesseract,",2020-09-11,Close,2020-09-13
+BIKRAMJIT CHOWDHURY,"Software Installation - Airflow,python,qpdf, tesseract,",2020-09-11,Open,-
+INDRESH BHATTACHARYA,"Help in Software Installation - Airflow,python,qpdf, tesseract,",2020-09-13,Open,-
+RITAPRAVA DUTTA,"Extract Table ,paragraph, header -US14137771SecondCreditAgreement2015.pdf",2020-09-13,Open,-
+SWARNA YAMUNA,"Extract Table ,paragraph, header -US1CreditAgreemet.pdf",2020-09-13,Open,-
+BIKRAMJIT CHOWDHURY,"Extract Table ,paragraph, header -Syndication.pdf",2020-09-13,Open,-
+RITAPRAVA DUTTA,ScannedPDF minor Error fixes,2020-09-24,Open,-
+PRASANT KOLAREDU,ScannedPDF minor Error fixes,2020-09-24,Open,-
+TITUS MATHEWS,ScannedPDF Skew correction,2020-09-24,Open,-
+BIKRAMJIT CHOWDHURY,OCR accuracy Correction,2020-09-24,Open,-
+SWARNA YAMUNA,XBRL processing,2020-09-24,Open,-
+RITAPRAVA DUTTA,Workspace Issues,2020-09-28,Close,2020-10-02
+SWARNA YAMUNA,Workspace Issues,2020-09-28,Close,2020-10-01
+BIKRAMJIT CHOWDHURY,Workspace Issues,2020-09-28,Close,2020-10-01
+PRASANT KOLAREDU,Workspace Issues,2020-09-28,Close,2020-10-01
+TITUS MATHEWS,Workspace Issues,2020-09-28,Close,2020-10-01
+RITAPRAVA DUTTA,ST- Scanned Pdf Missing values extraction Issues and Wrong Values,2020-10-20,Open,-
+PRASANT KOLAREDU,ST- Scanned Pdf NLP - remove words and characters and noisy data extraction,2020-10-20,Open,-
+TITUS MATHEWS,ST- Scanned PDF Row merged Issue ,2020-10-20,Open,-
+BIKRAMJIT CHOWDHURY,ST- Implement Image Processing algo to reduce OCR inaccuracy,2020-10-20,Open,-
+SWARNA YAMUNA,Create api for xbrl config Upload and view,2020-10-05,Close,2020-10-13
+SWARNA YAMUNA,XBRL code optimization,2020-10-07,Close,2020-10-16

@@ -1,0 +1,41 @@
+{% extends "header.html" %}
+{% block head %}
+ <div class="container">
+ 	<form action="" method="POST">
+        <div class="columns">
+        	
+          <div class="column">
+            <div class="control">
+              <input class="input" type="text" name="member" placeholder="Add Member Name">
+            </div>
+          </div>
+          
+          <div class="column">
+          <button class="button is-success">Add New Team Member</button>
+          </div>
+          
+        </div>
+    </form>
+    <div style="padding-top: 20px;">
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Team Member</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+          	{% for i in data%}
+            <tr>
+            	<td style="width: 10%">{{loop.index}}</td>
+              <td>{{i["name"]}}</td>
+              <td style="text-align: center;width: 10%"><img src="https://img.icons8.com/fluent/48/000000/delete-forever.png" height="30" width="30" /></td>
+            </tr>
+
+            {%endfor%}
+          </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
