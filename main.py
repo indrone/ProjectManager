@@ -31,8 +31,9 @@ def hello_world():
 	if request.method=="POST":
 		name=request.form["name"]
 		task=request.form["task"]
+		date=request.form["date"]
 		idx=uuid.uuid4()
-		dbops.insert(task_db,{"idx":str(idx),"name":name,"task":task,"startdate":today,"status":"Open","enddate":"-"})
+		dbops.insert(task_db,{"idx":str(idx),"name":name,"task":task,"startdate":date,"status":"Open","enddate":"-"})
 	task= dbops.get_all(task_db)
 	task=map_member_task(member,task)
 
